@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package sensor;
+option go_package = "/proto;proto";
+
+message SensorData {
+  double sensor_value = 1;
+  string sensor_type = 2;
+  string ID1 = 3;
+  int32 ID2 = 4;
+  string timestamp = 5;
+}
+
+service SensorService {
+  rpc SendSensorData(SensorData) returns (Ack);
+}
+
+message Ack {
+  string message = 1;
+}
