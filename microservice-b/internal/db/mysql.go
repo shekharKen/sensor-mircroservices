@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"microservice-b/internal/domain"
 
@@ -11,11 +12,11 @@ import (
 )
 
 func InitMySQL() *gorm.DB {
-	user := "root"
-	pass := "Root@123"
-	host := "localhost"
-	port := "3306"
-	name := "interview_task_db"
+	user := os.Getenv("DB_USER")
+	pass := os.Getenv("DB_PASS")
+	host:= os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	name := os.Getenv("DB_NAME")
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
 		user, pass, host, port, name,
